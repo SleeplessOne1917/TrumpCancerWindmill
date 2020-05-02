@@ -7,12 +7,13 @@
 		<priorityMode>PrioritizeNearest</priorityMode>
 		<subSounds>
 			<li>
+				<muteWhenPaused>True</muteWhenPaused>
 				<grains>
 					<li Class="AudioGrain_Clip">
 						<clipPath>trump_windmill</clipPath>
 					</li>
 				</grains>
-				<volumeRange>16~16</volumeRange>
+				<volumeRange>69~550</volumeRange>
 				<distRange>0~50.27907</distRange>
 			</li>
 		</subSounds>
