@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<SoundDef>
+		<defname>WindTurbine_Ambience</defname>
+		<sustain>True</sustain>
+		<context>MapOnly</context>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>trump_windmill</clipPath>
+					</li>
+				</grains>
+				<volumeRange>16~16</volumeRange>
+				<distRange>0~50.27907</distRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+</Defs>
