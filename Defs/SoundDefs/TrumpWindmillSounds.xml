@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<SoundDef>
-		<defname>WindTurbine_Ambience</defname>
+		<defName>WindTurbine_Ambience</defName>
 		<sustain>True</sustain>
 		<context>MapOnly</context>
 		<priorityMode>PrioritizeNearest</priorityMode>
