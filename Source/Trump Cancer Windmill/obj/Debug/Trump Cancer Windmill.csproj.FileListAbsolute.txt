@@ -1,0 +1,4 @@
+C:\Users\abias\OneDrive\Desktop\Trump Windmill Sound\Source\Trump Cancer Windmill\obj\Debug\Trump Cancer Windmill.csprojAssemblyReference.cache
+C:\Users\abias\OneDrive\Desktop\Trump Windmill Sound\Source\Trump Cancer Windmill\obj\Debug\Trump Cancer Windmill.csproj.CoreCompileInputs.cache
+C:\Users\abias\OneDrive\Desktop\Trump Windmill Sound\Assemblies\Trump Cancer Windmill.dll
+C:\Users\abias\OneDrive\Desktop\Trump Windmill Sound\Source\Trump Cancer Windmill\obj\Debug\Trump Cancer Windmill.dll
