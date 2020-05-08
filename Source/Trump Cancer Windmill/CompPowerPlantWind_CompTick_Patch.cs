@@ -1,25 +1,32 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using System.Reflection;
 using Verse;
 
-namespace Trump_Cancer_Windmill
+namespace TrumpCancerWindmill
 {
-    [StaticConstructorOnStartup]
-    public static class CompPowerPlantWind_CompTick_Patch
+    namespace HarmonyPatches
     {
-        static CompPowerPlantWind_CompTick_Patch()
+        [StaticConstructorOnStartup]
+        internal static class Main
         {
-            var harmony = new Harmony("abias1122.TrumpWindmillSound");
+            static Main()
+            {
+                var harmony = new Harmony("abias1122.TrumpWindmillSound");
 
-            harmony.Patch(
-                AccessTools.Method(typeof(CompPowerPlantWind), nameof(CompPowerPlantWind.CompTick)),
-                null,
-                new HarmonyMethod(typeof(CompPowerPlantWind_CompTick_Patch), nameof(PostfixCompTick)));
+                harmony.PatchAll(Assembly.GetExecutingAssembly());
+            }
+
         }
 
-        static void PostfixCompTick()
+        [HarmonyPatch(typeof(CompPowerPlantWind), "CompTick")]
+        class CompPowerPlantWindPatch
         {
-            Log.Message("Logging wind turbine tick");
+            [HarmonyPostfix]
+            static void Postfix()
+            {
+                Log.Message("Logging wind turbine tick");
+            }
         }
     }
 }
