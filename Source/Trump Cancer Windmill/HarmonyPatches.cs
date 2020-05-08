@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using System.Linq;
 using System.Reflection;
 using Trump_Cancer_Windmill;
 using Verse;
@@ -24,9 +25,15 @@ namespace TrumpCancerWindmill
         class CompPowerPlantWindPatch
         {
             [HarmonyPostfix]
-            static void Postfix()
+            static void Postfix(CompPowerPlantWind __instance)
             {
-                Log.Message("Logging wind turbine tick");
+                var map = __instance.parent.Map;
+                var cellsToCheck = map.AllCells.Where(cell => cell.DistanceTo(__instance.parent.Position) <= CancerConstants.CANCER_RADIUS);
+                var pawnsInRadius = cellsToCheck.Select(cell => cell.GetFirstPawn(map)).Where(pawn => pawn != null);
+                foreach(var pawn in pawnsInRadius)
+                {
+                    Log.Message($"Pawn {pawn.Name} in radius of windmill {__instance}");
+                }
             }
         }
 
