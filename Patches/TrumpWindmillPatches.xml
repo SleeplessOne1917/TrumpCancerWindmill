@@ -6,4 +6,11 @@
 			<soundAmbient>WindTurbine_Ambience</soundAmbient>
 		</value>
 	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="WindTurbine"]/description</xpath>
+		<value>
+			<description>A wind-powered electrical generator. Requires a large clear space in front and behind for optimal air flow. If you have a windmill anywhere near your house, congratulations: your house just went down 75% in value! And they say the noise causes cancer.</description>
+		</value>
+	</Operation>
 </Patch>
