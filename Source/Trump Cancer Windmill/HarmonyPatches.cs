@@ -1,5 +1,7 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Trump_Cancer_Windmill;
@@ -27,13 +29,36 @@ namespace TrumpCancerWindmill
             [HarmonyPostfix]
             static void Postfix(CompPowerPlantWind __instance)
             {
+                foreach(var pawn in GetPawnsInRadius(__instance))
+                {
+                    if (Rand.Value < CancerConstants.CANCER_CHANCE)
+                    {
+                        var cancerOnPawn = pawn.health?.hediffSet?.GetFirstHediffOfDef(HediffDefOf.Carcinoma);
+                        var severity = Rand.Range(0.15f, 0.30f);
+
+                        if(cancerOnPawn != null)
+                        {
+                            cancerOnPawn.Severity += severity;
+                            Messages.Message($"{pawn.Name}'s cancer worsened!", MessageTypeDefOf.NegativeHealthEvent);
+                        }
+                        else
+                        {
+                            var cancer = HediffMaker.MakeHediff(HediffDefOf.Carcinoma, pawn);
+                            cancer.Severity = severity;
+                            pawn.health.AddHediff(cancer);
+
+                            Messages.Message($"{pawn.Name} has cancer!", MessageTypeDefOf.NegativeHealthEvent);
+                        }
+                    }
+                    //Log.Message($"Pawn {pawn.Name} in radius of windmill {__instance}");
+                }
+            }
+
+            private static IEnumerable<Pawn> GetPawnsInRadius(CompPowerPlantWind __instance)
+            {
                 var map = __instance.parent.Map;
                 var cellsToCheck = map.AllCells.Where(cell => cell.DistanceTo(__instance.parent.Position) <= CancerConstants.CANCER_RADIUS);
-                var pawnsInRadius = cellsToCheck.Select(cell => cell.GetFirstPawn(map)).Where(pawn => pawn != null);
-                foreach(var pawn in pawnsInRadius)
-                {
-                    Log.Message($"Pawn {pawn.Name} in radius of windmill {__instance}");
-                }
+                return cellsToCheck.Select(cell => cell.GetFirstPawn(map)).Where(pawn => pawn != null);
             }
         }
 
@@ -43,7 +68,7 @@ namespace TrumpCancerWindmill
             [HarmonyPostfix]
             static void DrawCancerRadius(ThingComp __instance)
             {
-                if(__instance is CompPowerPlantWind)
+                if (__instance is CompPowerPlantWind)
                 {
                     GenDraw.DrawRadiusRing(__instance.parent.Position, CancerConstants.CANCER_RADIUS);
                 }
