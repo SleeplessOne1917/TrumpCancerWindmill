@@ -16,7 +16,7 @@ namespace TrumpCancerWindmill
         {
             static Main()
             {
-                var harmony = new Harmony("abias1122.TrumpWindmillSound");
+                var harmony = new Harmony("abias1122.TrumpCancerWindmill");
 
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
             }
@@ -50,7 +50,6 @@ namespace TrumpCancerWindmill
                             Messages.Message($"{pawn.Name} has cancer!", MessageTypeDefOf.NegativeHealthEvent);
                         }
                     }
-                    //Log.Message($"Pawn {pawn.Name} in radius of windmill {__instance}");
                 }
             }
 

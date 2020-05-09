@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetData>
-	<name>Trump Windmill Sound</name>
+	<name>Trump Cancer Windmills</name>
 	<author>abias1122</author>
 	<supportedVersions>
 		<li>1.1</li>
 	</supportedVersions>
-	<packageId>abias1122.TrumpWindmillSound</packageId>
-	<description>Worried that the sound of windmills can cause cancer? Want to have a patriotic bird graveyard? Then install this mod to make windmills sound like our glorious leader!</description>
+	<packageId>abias1122.TrumpCancerWindmill</packageId>
+	<description>What if Trump was right and windmills caused cancer? With this mod, you can step into Trump's reality where windmills are noisy cancer machines.
+
+		Affects on game:
+		- Wind turbines now make Trump sounds
+		- Wind turbines have a chance of causing pawns too close to it to develop carcinoma</description>
 </ModMetData>
