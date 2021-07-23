@@ -8,6 +8,7 @@ namespace Trump_Cancer_Windmill
     {
         public int cancerRadius = 20;
         public float cancerChance = 0.00001f;
+		public bool disableCancer = false;
 
 		public override void ExposeData()
 		{
@@ -26,6 +27,8 @@ namespace Trump_Cancer_Windmill
 
 			list.Label("SettingsChanceLabel".Translate($"{cancerChance:P3}"));
 			cancerChance = list.Slider(cancerChance, 0.0f, 1.0f);
+
+			list.CheckboxLabeled("SettingsDisableCancerLabel".Translate(), ref disableCancer);
 
 			list.End();
 		}

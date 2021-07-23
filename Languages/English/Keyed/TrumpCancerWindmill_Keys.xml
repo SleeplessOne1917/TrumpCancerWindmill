@@ -3,7 +3,8 @@
   <GotCancerMessage>{0} has cancer!</GotCancerMessage>
   <CancerWorsenedMessage>{0}'s cancer worsened!</CancerWorsenedMessage>
 
-  <ModLabel>Trump Cancer Windmills</ModLabel>
-  <SettingsRadiusLabel>Windmill cancer causing radius ({0} tiles)</SettingsRadiusLabel>
+  <ModLabel>Trump Cancer Wind Turbines</ModLabel>
+  <SettingsRadiusLabel>Wind turbine cancer causing radius ({0} tiles)</SettingsRadiusLabel>
   <SettingsChanceLabel>Chance per tick windmill causes cancer ({0})</SettingsChanceLabel>
+  <SettingsDisableCancerLabel>Disable cancer (turn on if you only want the sounds)</SettingsDisableCancerLabel>
 </LanguageData>

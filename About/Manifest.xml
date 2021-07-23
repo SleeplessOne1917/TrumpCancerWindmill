@@ -2,7 +2,7 @@
 
 <Manifest>
   <identifier>abias1122.TrumpCancerWindmill</identifier>
-  <version>1.0</version>
+  <version>1.1</version>
   <manifestUri>https://raw.githubusercontent.com/abias1122/TrumpCancerWindmill/master/About/Manifest.xml</manifestUri>
   <downloadUri>https://github.com/abias1122/TrumpCancerWindmill/releases/latest</downloadUri>
 </Manifest>

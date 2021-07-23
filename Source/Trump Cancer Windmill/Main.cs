@@ -48,25 +48,28 @@ namespace TrumpCancerWindmill
         [HarmonyPostfix]
         static void Postfix(CompPowerPlantWind __instance)
         {
-            foreach(var pawn in GetPawnsInRadius(__instance))
+            if (!TrumpCancerWindmill.Settings.disableCancer)
             {
-                if (Rand.Value < TrumpCancerWindmill.Settings.cancerChance)
+                foreach (var pawn in GetPawnsInRadius(__instance))
                 {
-                    var cancerOnPawn = pawn.health?.hediffSet?.GetFirstHediffOfDef(HediffDefOf.Carcinoma);
-                    var severity = Rand.Range(0.15f, 0.30f);
-
-                    if(cancerOnPawn != null)
+                    if (Rand.Value < TrumpCancerWindmill.Settings.cancerChance)
                     {
-                        cancerOnPawn.Severity += severity;
-                        Messages.Message("CancerWorsenedMessage".Translate(pawn.Name), MessageTypeDefOf.NegativeHealthEvent);
-                    }
-                    else
-                    {
-                        var cancer = HediffMaker.MakeHediff(HediffDefOf.Carcinoma, pawn);
-                        cancer.Severity = severity;
-                        pawn.health.AddHediff(cancer);
+                        var cancerOnPawn = pawn.health?.hediffSet?.GetFirstHediffOfDef(HediffDefOf.Carcinoma);
+                        var severity = Rand.Range(0.15f, 0.30f);
 
-                        Messages.Message("GotCancerMessage".Translate(pawn.Name), MessageTypeDefOf.NegativeHealthEvent);
+                        if (cancerOnPawn != null)
+                        {
+                            cancerOnPawn.Severity += severity;
+                            Messages.Message("CancerWorsenedMessage".Translate(pawn.Name), MessageTypeDefOf.NegativeHealthEvent);
+                        }
+                        else
+                        {
+                            var cancer = HediffMaker.MakeHediff(HediffDefOf.Carcinoma, pawn);
+                            cancer.Severity = severity;
+                            pawn.health.AddHediff(cancer);
+
+                            Messages.Message("GotCancerMessage".Translate(pawn.Name), MessageTypeDefOf.NegativeHealthEvent);
+                        }
                     }
                 }
             }
